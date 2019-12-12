@@ -1,5 +1,5 @@
 import React from 'react';
-import logo from './logo.svg';
+import FindItem from './FindItem';
 import './App.css';
 
 function App() {
@@ -7,8 +7,8 @@ function App() {
     <div >
 
       Can you see me now?
-
-    </div>
+      < FindItem />
+    </div >
   );
 }
 
