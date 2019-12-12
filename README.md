@@ -1,68 +1,94 @@
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+# _{Inventory App}_
 
-## Available Scripts
+#### _{An application to help automate the physical inventory for libraries using Ex Libris Alma.}, {12/12/2019}_
 
-In the project directory, you can run:
+#### By _**{Chris Underwood}**_
 
-### `npm start`
+## Description
 
-Runs the app in the development mode.<br />
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+_{This is a detailed description of your application. Its purpose and usage.  Give as much detail as needed to explain what the application does, and any other information you want users or other developers to have. }_
 
-The page will reload if you make edits.<br />
-You will also see any lint errors in the console.
+## Setup/Installation Requirements
 
-### `npm test`
+* _This is a great place_
+* _to list setup instructions_
+* _in a simple_
+* _easy-to-understand_
+* _format_
 
-Launches the test runner in the interactive watch mode.<br />
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+_{Leave nothing to chance! You want it to be easy for potential users, employers and collaborators to run your app. Do I need to run a server? How should I set up my databases? Is there other code this app depends on?}_
 
-### `npm run build`
+## Known Bugs
 
-Builds the app for production to the `build` folder.<br />
-It correctly bundles React in production mode and optimizes the build for the best performance.
+_{Are there issues that have not yet been resolved that you want to let users know you know?  Outline any issues that would impact use of your application.  Share any workarounds that are in place. }_
 
-The build is minified and the filenames include the hashes.<br />
-Your app is ready to be deployed!
+## Support and contact details
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+_{Let people know what to do if they run into any issues or have questions, ideas or concerns.  Encourage them to contact you or make a contribution to the code.}_
 
-### `npm run eject`
+## Technologies Used
 
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
+_{Tell me about the languages and tools you used to create this app. Assume that I know you probably used HTML and CSS. If you did something really cool using only HTML, point that out.}_
 
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+### License
 
-Instead, it will copy all the configuration files and the transitive dependencies (Webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
+*{Determine the license under which this application can be used.  See below for more details on licensing.}*
 
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
+Copyright (c) 2015 **_{List of contributors or company name}_**
 
-## Learn More
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
 
-To learn React, check out the [React documentation](https://reactjs.org/).
 
-### Code Splitting
+Getting Started
+These instructions will get you a copy of the project up and running on your local machine for development and testing purposes. See deployment for notes on how to deploy the project on a live system.
 
-This section has moved here: https://facebook.github.io/create-react-app/docs/code-splitting
+Prerequisites
+What things you need to install the software and how to install them
 
-### Analyzing the Bundle Size
+Give examples
+Installing
+A step by step series of examples that tell you how to get a development env running
 
-This section has moved here: https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size
+Say what the step will be
 
-### Making a Progressive Web App
+Give the example
+And repeat
 
-This section has moved here: https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app
+until finished
+End with an example of getting some data out of the system or using it for a little demo
 
-### Advanced Configuration
+Running the tests
+Explain how to run the automated tests for this system
 
-This section has moved here: https://facebook.github.io/create-react-app/docs/advanced-configuration
+Break down into end to end tests
+Explain what these tests test and why
 
-### Deployment
+Give an example
+And coding style tests
+Explain what these tests test and why
 
-This section has moved here: https://facebook.github.io/create-react-app/docs/deployment
+Give an example
+Deployment
+Add additional notes about how to deploy this on a live system
 
-### `npm run build` fails to minify
+Built With
+Dropwizard - The web framework used
+Maven - Dependency Management
+ROME - Used to generate RSS Feeds
+Contributing
+Please read CONTRIBUTING.md for details on our code of conduct, and the process for submitting pull requests to us.
 
-This section has moved here: https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify
+Versioning
+We use SemVer for versioning. For the versions available, see the tags on this repository.
+
+Authors
+Billie Thompson - Initial work - PurpleBooth
+See also the list of contributors who participated in this project.
+
+License
+This project is licensed under the MIT License - see the LICENSE.md file for details
+
+Acknowledgments
+Hat tip to anyone whose code was used
+Inspiration
+etc
