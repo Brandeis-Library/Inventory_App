@@ -1,5 +1,5 @@
 import React from 'react';
-import FindItem from './FindItem';
+import ReceiveBarcode from './ReceiveBarcode';
 import './App.css';
 
 
@@ -11,7 +11,7 @@ function App() {
     <div >
 
       Can you see me now?
-      < FindItem />
+      < ReceiveBarcode />
     </div >
   );
 }
