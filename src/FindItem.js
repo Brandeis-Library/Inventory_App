@@ -1,32 +1,75 @@
 import React from 'react';
+const axios = require('axios');
+var parser = require('fast-xml-parser');
+var he = require('he');
+
+var options = {
+  attributeNamePrefix: "@_",
+  attrNodeName: "attr", //default is 'false'
+  textNodeName: "#text",
+  ignoreAttributes: true,
+  ignoreNameSpace: false,
+  allowBooleanAttributes: false,
+  parseNodeValue: true,
+  parseAttributeValue: false,
+  trimValues: true,
+  cdataTagName: "__cdata", //default is 'false'
+  cdataPositionChar: "\\c",
+  localeRange: "", //To support non english character in tag/attribute values.
+  parseTrueNumberOnly: false,
+  arrayMode: false, //"strict"
+  attrValueProcessor: (val, attrName) => he.decode(val, { isAttributeValue: true }),//default is a=>a
+  tagValueProcessor: (val, tagName) => he.decode(val), //default is a=>a
+  stopNodes: ["parse-me-as-string"]
+};
 
 class FindItem extends React.Component {
   constructor(props) {
     super(props)
     this.state = {
       barcode: '',
-      item: { title: "Nothing honey." },
+      title: "",
+      mms_id: "",
+      holdingID: "",
+      itemID: "",
+      callNum: "",
+    }
+  }
+
+  async callAPI() {
+    let { data } = await axios.post("http://localhost:9000/testAPI", { barcode: this.state.barcode })
+    if (parser.validate(data) === true) { //optional (it'll return an object in case it's not valid)
+      var jsonObj = await parser.parse(data, options);
+
+      console.log("jsonObj-----------", jsonObj)
+      await this.setState({
+        title: jsonObj.item.bib_data.title,
+        mms_id: jsonObj.item.bib_data.mms_id,
+        holdingID: jsonObj.item.holding_data.holding_id,
+        itemID: jsonObj.item.item_data.pid,
+        callNum: jsonObj.item.holding_data.call_number
+      })
     }
   }
 
 
-
-  componentDidUpdate(prevProps, prevState) {
-
+  async componentDidUpdate(prevProps, prevState) {
     if (prevProps.barcode2 !== this.props.barcode2) {
-      this.setState({ barcode: this.props.barcode2 })
+      const barcodeClean = this.props.barcode2.trim();
+      await this.setState({ barcode: barcodeClean })
+      this.callAPI();
     }
   }
 
   render() {
-    console.log('FindItem this.props', this.props)
     return (
-      <div>
-        <h1>FindItem.js</h1>
-
-        <p>{this.state.item.title}</p>
-        <p>Barcode in FindItem: {this.state.barcode}</p>
-
+      <div className="list">
+        <p>Barcode being retreived: {this.state.barcode}</p>
+        <p>Title: {this.state.title}</p>
+        <p>Call # {this.state.callNum}</p>
+        <p>MMS (BibID): {this.state.mms_id}</p>
+        <p>HoldingID: {this.state.holdingID}</p>
+        <p>ItemID: {this.state.itemID}</p>
       </div>)
   }
 }

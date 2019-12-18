@@ -1,4 +1,10 @@
 .App {
   text-align: center;
+  background-color:  #b1cbbb;
+  padding: 30px 0;
 }
+
+.App h1 {font-family: Caveat;}
+
+.App .list {font-family: Libre; color: #000};
 

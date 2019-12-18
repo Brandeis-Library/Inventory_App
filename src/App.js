@@ -5,12 +5,9 @@ import './App.css';
 
 function App() {
 
-
-
   return (
-    <div >
-
-      Can you see me now?
+    <div className="App">
+      <h1>Brandeis Library Inventory App</h1>
       < ReceiveBarcode />
     </div >
   );

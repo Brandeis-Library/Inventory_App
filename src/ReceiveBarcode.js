@@ -6,25 +6,28 @@ class ReceiveBarcode extends React.Component {
   constructor(props) {
     super(props)
     this.state = {
-      barcode: "",
-
+      tempBarcode: "",
+      barcode: '',
     }
   }
 
   handleChange = (event) => {
-    this.setState({ barcode: event.target.value })
+    this.setState({ tempBarcode: event.target.value })
   }
 
   handleSubmit = (event) => {
     event.preventDefault();
+    this.setState({ barcode: this.state.tempBarcode });
+    this.setState({ tempBarcode: "" });
   }
 
   render() {
+
     return (<div>
-      <form>
+      <form onSubmit={this.handleSubmit}>
         <label>
           Barcode:
-        <textarea autoFocus value={this.state.barcode} onChange={this.handleChange} name="barcode" />
+        <input type="text" autoFocus value={this.state.tempBarcode} onChange={this.handleChange} name="tempBarcode" />
         </label>
         <input type="submit" value="Submit" />
       </form>
