@@ -37,7 +37,7 @@ class FindItem extends React.Component {
   }
 
   async callAPI() {
-    let { data } = await axios.post("http://localhost:9000/testAPI", { barcode: this.state.barcode })
+    let { data } = await axios.post("http://localhost:9000/retreiveItem", { barcode: this.state.barcode })
     if (parser.validate(data) === true) { //optional (it'll return an object in case it's not valid)
       var jsonObj = await parser.parse(data, options);
 
