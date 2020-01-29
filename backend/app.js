@@ -30,7 +30,10 @@ app.use(express.static(path.join(__dirname, 'public')));
 
 app.use('/', indexRouter);
 // app.use('/postItem', postItemRouter);
-app.use("/retreiveItem", retreiveItemRouter, proxy({ target: 'https://api-na.hosted.exlibrisgroup.com/', changeOrigin: true }));
+app.use("/retreiveItem", retreiveItemRouter);
+
+
+
 
 // catch 404 and forward to error handler
 app.use(function (req, res, next) {
