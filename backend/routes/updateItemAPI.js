@@ -8,8 +8,9 @@ dotenv.config();
 /*  update item route. */
 router.post('/', async function (req, res, next) {
   try {
+    console.log("req.body---------  ", req.body)
     console.log("inside update route")
-    let data = await axios.put(EXLIBRIS_API_ROOT + '/almaws/v1/bibs/996852870101921/holdings/22178430490001921/items/23178430480001921' + '&apikey=' + process.env.EXLIBRIS_API_BIB_UPDATE_KEY, { item_data: { "inventory_number": 'This was upodated.' } })
+    let data = await axios.put(EXLIBRIS_API_ROOT + '/almaws/v1/bibs/996852870101921/holdings/22178430490001921/items/23178430480001921' + '&apikey=' + process.env.EXLIBRIS_API_BIB_UPDATE_KEY, { "item_data": { "inventory_number": 'This was upodated.' } })
 
     console.log("after the put statement.")
 

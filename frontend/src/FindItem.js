@@ -52,8 +52,12 @@ class FindItem extends React.Component {
     }
   }
 
-  async updateInventory() {
-    let { data } = await axios.post("http://localhost:9000/updateItem", {})
+  updateInventory = async () => {
+    console.log("updateInventory activated+++++++++");
+    //event.preventDefault();
+
+    let data = await axios.post("http://localhost:9000/updateItem", { item_data: { "inventory_number": 'This was upodated.' } })
+    console.log("data front end api", data)
   }
 
   async componentDidUpdate(prevProps, prevState) {
