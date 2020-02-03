@@ -9,7 +9,7 @@ var cors = require("cors");
 var proxy = require('http-proxy-middleware');
 
 var indexRouter = require('./routes/index');
-// var postItemRouter = require('./routes/postItemAPI');
+var updateItemRouter = require('./routes/updateItemAPI');
 var retreiveItemRouter = require("./routes/retreiveItemAPI");
 
 var app = express();
@@ -29,7 +29,7 @@ app.use(express.static(path.join(__dirname, 'public')));
 
 
 app.use('/', indexRouter);
-// app.use('/postItem', postItemRouter);
+app.use('/updateItem', updateItemRouter);
 app.use("/retreiveItem", retreiveItemRouter);
 
 
