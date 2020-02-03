@@ -52,6 +52,9 @@ class FindItem extends React.Component {
     }
   }
 
+  async updateInventory() {
+    let { data } = await axios.post("http://localhost:9000/updateItem", {})
+  }
 
   async componentDidUpdate(prevProps, prevState) {
     if (prevProps.barcode2 !== this.props.barcode2) {
@@ -70,6 +73,7 @@ class FindItem extends React.Component {
         <p>MMS (BibID): {this.state.mms_id}</p>
         <p>HoldingID: {this.state.holdingID}</p>
         <p>ItemID: {this.state.itemID}</p>
+        <button onClick={this.updateInventory} >Update Inventory</button>
       </div>)
   }
 }
