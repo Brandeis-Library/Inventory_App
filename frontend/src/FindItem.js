@@ -56,7 +56,7 @@ class FindItem extends React.Component {
     console.log("updateInventory activated+++++++++");
     //event.preventDefault();
 
-    let data = await axios.post("http://localhost:9000/updateItem", { item_data: { "inventory_number": 'This was upodated.' } })
+    let data = await axios.post("http://localhost:9000/updateItem", { "item_data": { "inventory_number": 'This was upodated.' } })
     console.log("data front end api", data)
   }
 
