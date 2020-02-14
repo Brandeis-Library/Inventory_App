@@ -1,63 +1,56 @@
 import React from 'react';
 const axios = require('axios');
-var parser = require('fast-xml-parser');
-var he = require('he');
 
-var options = {
-  attributeNamePrefix: "@_",
-  attrNodeName: "attr", //default is 'false'
-  textNodeName: "#text",
-  ignoreAttributes: true,
-  ignoreNameSpace: false,
-  allowBooleanAttributes: false,
-  parseNodeValue: true,
-  parseAttributeValue: false,
-  trimValues: true,
-  cdataTagName: "__cdata", //default is 'false'
-  cdataPositionChar: "\\c",
-  localeRange: "", //To support non english character in tag/attribute values.
-  parseTrueNumberOnly: false,
-  arrayMode: false, //"strict"
-  attrValueProcessor: (val, attrName) => he.decode(val, { isAttributeValue: true }),//default is a=>a
-  tagValueProcessor: (val, tagName) => he.decode(val), //default is a=>a
-  stopNodes: ["parse-me-as-string"]
-};
 
 class FindItem extends React.Component {
   constructor(props) {
     super(props)
     this.state = {
-      barcode: '',
+      barcode: "",
       title: "",
       mms_id: "",
       holdingID: "",
       itemID: "",
       callNum: "",
+      inventoryDate: "",
+      inventoryNum: "",
+      internalNote3: "",
+      dataObj: {},
     }
   }
 
-  async callAPI() {
-    let { data } = await axios.post("http://localhost:9000/retreiveItem", { barcode: this.state.barcode })
-    if (parser.validate(data) === true) { //optional (it'll return an object in case it's not valid)
-      var jsonObj = await parser.parse(data, options);
 
-      console.log("jsonObj-----------", jsonObj)
-      await this.setState({
-        title: jsonObj.item.bib_data.title,
-        mms_id: jsonObj.item.bib_data.mms_id,
-        holdingID: jsonObj.item.holding_data.holding_id,
-        itemID: jsonObj.item.item_data.pid,
-        callNum: jsonObj.item.holding_data.call_number
-      })
-    }
+
+  async callAPI() {
+    let dataOrig = await axios.post("http://localhost:9000/retreiveItem", { barcode: this.state.barcode })
+    console.log("dataOrig", dataOrig);
+    let { data } = dataOrig;
+    console.log("data item received frontned-----------", data);
+
+    await this.setState({
+      title: data.bib_data.title,
+      mms_id: data.bib_data.mms_id,
+      holdingID: data.holding_data.holding_id,
+      itemID: data.item_data.pid,
+      callNum: data.holding_data.call_number,
+      inventoryDate: data.item_data.inventory_date || "None",
+      inventoryNum: data.item_data.inventory_number,
+      internalNote3: data.item_data.internal_note_3,
+      dataOrig: dataOrig,
+    })
   }
 
   updateInventory = async () => {
-    console.log("updateInventory activated+++++++++");
-    //event.preventDefault();
+    console.log("updateInventory activated+++++++++", this.state);
 
-    let data = await axios.post("http://localhost:9000/updateItem", { "item_data": { "inventory_number": 'This was upodated.' } })
-    console.log("data front end api", data)
+    // await this.setState({
+    //   dataOrig:
+    // });
+
+    console.log("State in updateInventory after State update and just before inventory update data is sent to the backend", this.state);
+
+    let data = await axios.put("http://localhost:9000/updateItem", { ...this.state.dataOrig })
+    console.log("inventory data from the back end, received on the front end api", data)
   }
 
   async componentDidUpdate(prevProps, prevState) {
@@ -77,6 +70,9 @@ class FindItem extends React.Component {
         <p>MMS (BibID): {this.state.mms_id}</p>
         <p>HoldingID: {this.state.holdingID}</p>
         <p>ItemID: {this.state.itemID}</p>
+        <p>Inventory Date: {this.state.inventoryDate}</p>
+        <p>Inventory #: {this.state.inventoryNum}</p>
+        <p>Internal Note: {this.state.internalNote3}</p>
         <button onClick={this.updateInventory} >Update Inventory</button>
       </div>)
   }

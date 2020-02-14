@@ -1,6 +1,6 @@
 var express = require("express");
 var router = express.Router();
-var request = require('request');
+const axios = require('axios');
 const dotenv = require('dotenv');
 dotenv.config();
 
@@ -9,12 +9,9 @@ dotenv.config();
 router.post("/", async function (req, res, next) {
 
   try {
-    await request(process.env.EXLIBRIS_API_ROOT + process.env.EXLIBRIS_API_PATH + req.body.barcode + '&apikey=' + process.env.EXLIBRIS_API_BIB_GET_KEY + "&expand=p_avail", function (error, response, body) {
-      console.log('error:', error); // Print the error if one occurred
-      console.log('statusCode:', response && response.statusCode); // Print the response status code if a response was received
-      console.log('body:', body); // Print the HTML for the Google homepage.
-      res.send(body);
-    });
+    const { data } = await axios.get(process.env.EXLIBRIS_API_ROOT + process.env.EXLIBRIS_API_PATH + req.body.barcode + '&apikey=' + process.env.EXLIBRIS_API_BIB_GET_KEY + "&expand=p_avail");
+    console.log('data:', data); // Print the HTML for the Google homepage.
+    res.json(data);
   } catch (error) {
     res.send(error);
   }
