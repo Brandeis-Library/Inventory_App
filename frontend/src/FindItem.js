@@ -16,6 +16,7 @@ class FindItem extends React.Component {
       inventoryNum: "",
       internalNote3: "",
       dataObj: {},
+      link: "",
     }
   }
 
@@ -26,6 +27,10 @@ class FindItem extends React.Component {
     console.log("dataOrig", dataOrig);
     let { data } = dataOrig;
     console.log("data item received frontned-----------", data);
+    let { item_data } = data;
+    console.log("Item data being broken out", item_data);
+    let { link_data } = dataOrig;
+
 
     await this.setState({
       title: data.bib_data.title,
@@ -35,21 +40,23 @@ class FindItem extends React.Component {
       callNum: data.holding_data.call_number,
       inventoryDate: data.item_data.inventory_date || "None",
       inventoryNum: data.item_data.inventory_number,
-      internalNote3: data.item_data.internal_note_3,
-      dataOrig: dataOrig,
+      internalNote3: "This item updated. ",//data.item_data.internal_note_3,
+      dataObj: data,
+
     })
   }
 
   updateInventory = async () => {
     console.log("updateInventory activated+++++++++", this.state);
 
-    // await this.setState({
-    //   dataOrig:
-    // });
+    // This is the code I was working on at the end of the day.
+    await this.setState(prevState => ({
+      ...prevState, ...this.state.dataObj,
+    }))
 
     console.log("State in updateInventory after State update and just before inventory update data is sent to the backend", this.state);
 
-    let data = await axios.put("http://localhost:9000/updateItem", { ...this.state.dataOrig })
+    let data = await axios.put("http://localhost:9000/updateItem", { ...this.state.dataObj })
     console.log("inventory data from the back end, received on the front end api", data)
   }
 
