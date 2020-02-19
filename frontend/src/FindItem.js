@@ -45,7 +45,9 @@ class FindItem extends React.Component {
     })
   }
 
-  updateInventory = async () => {
+  updateInventory = async (event) => {
+    event.preventDefault();
+
     console.log("updateInventory activated+++++++++", this.state);
 
 
