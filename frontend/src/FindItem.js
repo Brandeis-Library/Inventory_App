@@ -40,7 +40,7 @@ class FindItem extends React.Component {
       callNum: data.holding_data.call_number,
       inventoryDate: data.item_data.inventory_date || "None",
       inventoryNum: data.item_data.inventory_number,
-      internalNote3: "This item updated. ",//data.item_data.internal_note_3,
+      internalNote3: data.item_data.internal_note_3,
       dataObj: data,
     })
   }
@@ -57,6 +57,10 @@ class FindItem extends React.Component {
 
     let { data } = await axios.put("http://localhost:9000/updateItem", { ...this.state.dataObj, note: this.state.internalNote3, mmsId: this.state.mms_id, holdingId: this.state.holdingID, itemId: this.state.itemID })
     console.log("inventory data from the back end, received on the front end api", data)
+  }
+
+  handleChange = async (event) => {
+    await this.setState({ internalNote3: event.target.value });
   }
 
   async componentDidUpdate(prevProps, prevState) {
@@ -79,7 +83,13 @@ class FindItem extends React.Component {
         <p>Inventory Date: {this.state.inventoryDate}</p>
         <p>Inventory #: {this.state.inventoryNum}</p>
         <p>Internal Note: {this.state.internalNote3}</p>
-        <button onClick={this.updateInventory} >Update Inventory</button>
+        <form onSubmit={this.updateInventory}>
+          <label>
+            Enter an inventory note:
+            <input type="text" value={this.state.internalNote3} onChange={this.handleChange} />
+          </label>
+          <button  >Update Inventory</button>
+        </form>
       </div>)
   }
 }
