@@ -22,12 +22,11 @@ router.put('/', async function (req, res, next) {
   try {
     console.log("req.body---------  ", req.body)
     console.log("inside update route")
-    const data = await axios.put(process.env.EXLIBRIS_API_ROOT + '/almaws/v1/bibs/996852870101921/holdings/22178430490001921/items/23178430480001921?apikey=' + process.env.EXLIBRIS_API_BIB_UPDATE_KEY, req.body)
+    req.body.item_data.internal_note_3 = req.body.note;
 
-
+    let { data } = await axios.put(process.env.EXLIBRIS_API_ROOT + '/almaws/v1/bibs/996852870101921/holdings/22178430490001921/items/23178430480001921?apikey=' + process.env.EXLIBRIS_API_BIB_UPDATE_KEY, { bib_data: { ...req.body.bib_item }, holding_data: { ...req.body.holding_data }, item_data: { ...req.body.item_data }, link: req.body.link })
     console.log("after the put statement.")
     console.log("Connected to route")
-    console.log("-----returned item from Alma after update----- ", data)
     res.json(data);
   } catch (error) {
     console.log("updateErrorAPI Error:   ", error);

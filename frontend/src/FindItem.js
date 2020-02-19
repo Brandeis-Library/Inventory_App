@@ -42,7 +42,6 @@ class FindItem extends React.Component {
       inventoryNum: data.item_data.inventory_number,
       internalNote3: "This item updated. ",//data.item_data.internal_note_3,
       dataObj: data,
-
     })
   }
 
@@ -56,7 +55,7 @@ class FindItem extends React.Component {
 
     console.log("State in updateInventory after State update and just before inventory update data is sent to the backend", this.state);
 
-    let data = await axios.put("http://localhost:9000/updateItem", { ...this.state.dataObj })
+    let { data } = await axios.put("http://localhost:9000/updateItem", { ...this.state.dataObj, note: this.state.internalNote3 })
     console.log("inventory data from the back end, received on the front end api", data)
   }
 
