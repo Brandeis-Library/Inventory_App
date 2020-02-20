@@ -1,4 +1,5 @@
 import React from 'react';
+import { Button } from 'react-bootstrap';
 
 import FindItem from './FindItem';
 
@@ -17,8 +18,12 @@ class ReceiveBarcode extends React.Component {
 
   handleSubmit = (event) => {
     event.preventDefault();
-    this.setState({ barcode: this.state.tempBarcode });
-    this.setState({ tempBarcode: "" });
+    if (this.state.tempBarcode.length === 14) {
+      this.setState({ barcode: this.state.tempBarcode });
+      this.setState({ tempBarcode: "" });
+    } else {
+      alert("The barcode length is not correct");
+    }
   }
 
   render() {
@@ -27,9 +32,9 @@ class ReceiveBarcode extends React.Component {
       <form onSubmit={this.handleSubmit}>
         <label>
           Barcode:
-        <input type="text" autoFocus value={this.state.tempBarcode} onChange={this.handleChange} name="tempBarcode" />
+        <input type="text" autoFocus value={this.state.tempBarcode} onChange={this.handleChange} name="tempBarcode" placeholder="ex: 39097009544900" />
         </label>
-        <input type="submit" value="Submit" />
+        <Button className={"btn btn-secondary"} type="submit" value="Submit" >Submit Barcode</Button>
       </form>
       <FindItem barcode2={this.state.barcode} />
     </div>)

@@ -11,3 +11,20 @@ code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
 }
+
+.btn-secondary {
+  background: #050505;
+  color: aquamarine;
+  border-radius: 12px;
+  border-color: aquamarine;
+}
+
+.btn-secondary:hover {
+  color: white;
+  border-color: white;
+  box-shadow: 0 3px #666;
+}
+
+.btn-secondary:active {
+  transform: translateY(2px);
+}
