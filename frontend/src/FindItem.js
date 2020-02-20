@@ -1,4 +1,5 @@
 import React from 'react';
+import UpdateItem from './UpdateItem';
 const axios = require('axios');
 
 
@@ -19,8 +20,6 @@ class FindItem extends React.Component {
     }
   }
 
-
-
   async callAPI() {
     let { data } = await axios.post("http://localhost:9000/retreiveItem", { barcode: this.state.barcode })
     //console.log("data item received frontned-----------", data);
@@ -34,27 +33,6 @@ class FindItem extends React.Component {
       internalNote3: data.item_data.internal_note_3,
       dataObj: data,
     })
-  }
-
-  updateInventory = async (event) => {
-    event.preventDefault();
-
-    //console.log("updateInventory activated+++++++++", this.state);
-
-
-    await this.setState(prevState => ({
-      ...prevState, ...this.state.dataObj,
-    }))
-
-    //console.log("State in updateInventory after State update and just before inventory update data is sent to the backend", this.state);
-
-    let { data } = await axios.put("http://localhost:9000/updateItem", { ...this.state.dataObj, note: this.state.internalNote3, mmsId: this.state.mms_id, holdingId: this.state.holdingID, itemId: this.state.itemID })
-
-    //console.log("inventory data from the back end, received on the front end api", data)
-  }
-
-  handleChange = async (event) => {
-    await this.setState({ internalNote3: event.target.value });
   }
 
   async componentDidUpdate(prevProps, prevState) {
@@ -76,13 +54,8 @@ class FindItem extends React.Component {
         <p>ItemID: {this.state.itemID}</p>
         <p>Inventory Date: {this.state.inventoryDate}</p>
         <p>Internal Note: {this.state.internalNote3}</p>
-        <form onSubmit={this.updateInventory}>
-          <label>
-            Enter an inventory note:
-            <input type="text" value={this.state.internalNote3} onChange={this.handleChange} />
-          </label>
-          <button  >Update Inventory</button>
-        </form>
+
+        <UpdateItem itemToUpdate={this.state} />
       </div>)
   }
 }
