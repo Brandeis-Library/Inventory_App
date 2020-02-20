@@ -6,6 +6,10 @@ class UpdateItem extends React.Component {
     super(props)
     this.state = {
       internalNote3: "",
+      title: "",
+      callNum: "",
+      inventoryDate: "",
+      internalNoteReturned: "",
     }
   }
 
@@ -26,8 +30,13 @@ class UpdateItem extends React.Component {
 
     let { data } = await axios.put("http://localhost:9000/updateItem", { ...this.props.itemToUpdate.dataObj, note: this.state.internalNote3, mmsId: this.props.itemToUpdate.mms_id, holdingId: this.props.itemToUpdate.holdingID, itemId: this.props.itemToUpdate.itemID })
 
-    //console.log("inventory data from the back end, received on the front end api", data)
     //data will be used to show what the updated object looks like on the screen
+    this.setState({
+      internalNoteReturned: data.item_data.internal_note_3,
+      title: data.bib_data.title,
+      callNum: data.holding_data.call_number,
+      inventoryDate: data.item_data.inventory_date,
+    });
   }
 
   handleChange = async (event) => {
@@ -35,10 +44,10 @@ class UpdateItem extends React.Component {
   }
 
   render() {
-    console.log("this.props.itemToUpdate", this.props.itemToUpdate)
+
     return (
       <div>
-        <h4>Inside UpdateItem</h4>
+        <h4>Update an Item</h4>
         <form onSubmit={this.updateInventory}>
           <label>
             Enter an inventory note:
@@ -46,6 +55,12 @@ class UpdateItem extends React.Component {
           </label>
           <button>Update Inventory</button>
         </form>
+        <h4>Returned Item After Update</h4>
+        <p>Title: {this.state.title}</p>
+        <p>Call # {this.state.callNum}</p>
+        <p>Inventory Date: {this.state.inventoryDate}</p>
+        <p>Internal Note: {this.state.internalNoteReturned}</p>
+
       </div>
     )
   }
