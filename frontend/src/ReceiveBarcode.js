@@ -1,7 +1,9 @@
 import React from 'react';
 import { Button } from 'react-bootstrap';
 
+
 import FindItem from './FindItem';
+import AlertDismissible from './AlertDismissible';
 
 class ReceiveBarcode extends React.Component {
   constructor(props) {
@@ -9,11 +11,16 @@ class ReceiveBarcode extends React.Component {
     this.state = {
       tempBarcode: "",
       barcode: '',
+      showAlert: false,
     }
   }
 
   handleChange = (event) => {
     this.setState({ tempBarcode: event.target.value })
+  }
+
+  setShow = () => {
+    this.setState({ showAlert: !this.state.AlertshowAlert })
   }
 
   handleSubmit = (event) => {
@@ -22,13 +29,15 @@ class ReceiveBarcode extends React.Component {
       this.setState({ barcode: this.state.tempBarcode });
       this.setState({ tempBarcode: "" });
     } else {
-      alert("The barcode length is not correct");
+      this.setShow();
     }
   }
+
 
   render() {
 
     return (<div>
+      <AlertDismissible setShow={this.setShow} showAlert={this.state.showAlert} />
       <form onSubmit={this.handleSubmit}>
         <label>
           Barcode:
