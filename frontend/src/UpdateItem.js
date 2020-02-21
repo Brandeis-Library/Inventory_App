@@ -26,19 +26,25 @@ class UpdateItem extends React.Component {
   updateInventory = async (event) => {
     event.preventDefault();
 
-    await this.setState(prevProps => ({
-      ...prevProps, ...this.props.itemToUpdate.dataObj,
-    }))
+    if (this.props.itemToUpdate.mms_id) {
+      await this.setState(prevProps => ({
+        ...prevProps, ...this.props.itemToUpdate.dataObj,
+      }))
+      console.log("this.props.itemToUpdate.dataObj", this.props.itemToUpdate.dataObj);
 
-    let { data } = await axios.put("http://localhost:9000/updateItem", { ...this.props.itemToUpdate.dataObj, note: this.state.internalNote3, mmsId: this.props.itemToUpdate.mms_id, holdingId: this.props.itemToUpdate.holdingID, itemId: this.props.itemToUpdate.itemID })
+      let { data } = await axios.put("http://localhost:9000/updateItem", { ...this.props.itemToUpdate.dataObj, note: this.state.internalNote3, mmsId: this.props.itemToUpdate.mms_id, holdingId: this.props.itemToUpdate.holdingID, itemId: this.props.itemToUpdate.itemID })
 
-    //data will be used to show what the updated object looks like on the screen
-    this.setState({
-      internalNoteReturned: data.item_data.internal_note_3,
-      title: data.bib_data.title,
-      callNum: data.holding_data.call_number,
-      inventoryDate: data.item_data.inventory_date,
-    });
+
+      //data will be used to show what the updated object looks like on the screen
+      this.setState({
+        internalNoteReturned: data.item_data.internal_note_3,
+        title: data.bib_data.title,
+        callNum: data.holding_data.call_number,
+        inventoryDate: data.item_data.inventory_date,
+      });
+    } else {
+      alert("Retrieve a valid item before submitting changes.")
+    }
   }
 
   handleChange = async (event) => {
