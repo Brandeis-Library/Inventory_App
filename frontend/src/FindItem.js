@@ -22,17 +22,21 @@ class FindItem extends React.Component {
 
   async callAPI() {
     let { data } = await axios.post("http://localhost:9000/retreiveItem", { barcode: this.state.barcode })
-    //console.log("data item received frontned-----------", data);
-    await this.setState({
-      title: data.bib_data.title,
-      mms_id: data.bib_data.mms_id,
-      holdingID: data.holding_data.holding_id,
-      itemID: data.item_data.pid,
-      callNum: data.holding_data.call_number,
-      inventoryDate: data.item_data.inventory_date || "None",
-      internalNote3: data.item_data.internal_note_3,
-      dataObj: data,
-    })
+
+    if (data.name !== "Error") {
+      await this.setState({
+        title: data.bib_data.title,
+        mms_id: data.bib_data.mms_id,
+        holdingID: data.holding_data.holding_id,
+        itemID: data.item_data.pid,
+        callNum: data.holding_data.call_number,
+        inventoryDate: data.item_data.inventory_date || "None",
+        internalNote3: data.item_data.internal_note_3,
+        dataObj: data,
+      })
+    } else {
+      alert("Please enter a valid barcode.")
+    }
   }
 
   async componentDidUpdate(prevProps, prevState) {
