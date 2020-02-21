@@ -59,7 +59,7 @@ class UpdateItem extends React.Component {
         <form onSubmit={this.updateInventory}>
           <label>
             Enter an inventory note:
-            <input type="text" value={this.state.internalNote3} onChange={this.handleChange} name='internalNote3' placeholder="ex: Needs staff intervention." />
+            <input type="text" value={this.state.internalNote3} onChange={this.handleChange} name='internalNote3' placeholder="ex: Needs staff intervention." className={"rounded"} />
           </label>
           <p><Button className={"btn btn-secondary"} type="submit" value="Submit" >Update Inventory</Button></p>
         </form>
