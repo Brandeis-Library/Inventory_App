@@ -58,8 +58,9 @@ class FindItem extends React.Component {
         <p>ItemID: {this.state.itemID}</p>
         <p>Inventory Date: {this.state.inventoryDate}</p>
         <p>Internal Note: {this.state.internalNote3}</p>
-
+        <hr />
         <UpdateItem itemToUpdate={this.state} />
+
       </div>)
   }
 }
