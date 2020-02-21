@@ -1,4 +1,4 @@
- .App {
+ /*.App {
   text-align: center;
   background-color:  #b1cbbb;
   padding: 30px 0;
@@ -8,3 +8,20 @@
 
 .App .list {font-family: Libre; color: #000};
 
+.btn .btn-secondary {
+  background: #050505;
+  color: aquamarine;
+  border-radius: 12px;
+  border-color: aquamarine;
+}
+
+.btn .btn-secondary:hover {
+  color: white;
+  border-color: white;
+  box-shadow: 0 3px #666;
+}
+
+.btn .btn-secondary:active {
+  transform: translateY(2px);
+}
+*/

@@ -3,7 +3,7 @@ import { Button } from 'react-bootstrap';
 
 
 import FindItem from './FindItem';
-import AlertDismissible from './AlertDismissible';
+
 
 class ReceiveBarcode extends React.Component {
   constructor(props) {
@@ -11,7 +11,7 @@ class ReceiveBarcode extends React.Component {
     this.state = {
       tempBarcode: "",
       barcode: '',
-      showAlert: false,
+
     }
   }
 
@@ -19,9 +19,7 @@ class ReceiveBarcode extends React.Component {
     this.setState({ tempBarcode: event.target.value })
   }
 
-  setShow = () => {
-    this.setState({ showAlert: !this.state.AlertshowAlert })
-  }
+
 
   handleSubmit = (event) => {
     event.preventDefault();
@@ -29,24 +27,25 @@ class ReceiveBarcode extends React.Component {
       this.setState({ barcode: this.state.tempBarcode });
       this.setState({ tempBarcode: "" });
     } else {
-      this.setShow();
+      alert("Please enter a properly formatted barcode.")
     }
   }
 
 
   render() {
 
-    return (<div>
-      <AlertDismissible setShow={this.setShow} showAlert={this.state.showAlert} />
-      <form onSubmit={this.handleSubmit}>
-        <label>
-          Barcode:
+    return (
+      <div>
+        <form onSubmit={this.handleSubmit}>
+          <label>
+            Barcode:
         <input type="text" autoFocus value={this.state.tempBarcode} onChange={this.handleChange} name="tempBarcode" placeholder="ex: 39097009544900" />
-        </label>
-        <Button className={"btn btn-secondary"} type="submit" value="Submit" >Submit Barcode</Button>
-      </form>
-      <FindItem barcode2={this.state.barcode} />
-    </div>)
+          </label>
+          <p><Button className={"btn btn-secondary"} type="submit" value="Submit" >Submit Barcode</Button></p>
+        </form>
+        <FindItem barcode2={this.state.barcode} />
+      </div>
+    )
   }
 }
 

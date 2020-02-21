@@ -1,5 +1,7 @@
 import React from 'react';
+import { Button } from 'react-bootstrap';
 const axios = require('axios');
+
 
 class UpdateItem extends React.Component {
   constructor(props) {
@@ -47,13 +49,13 @@ class UpdateItem extends React.Component {
 
     return (
       <div>
-        <h4>Update an Item</h4>
+        <h4 className={"updateH4"}>Update an Item</h4>
         <form onSubmit={this.updateInventory}>
           <label>
             Enter an inventory note:
-            <input type="text" value={this.state.internalNote3} onChange={this.handleChange} />
+            <input type="text" value={this.state.internalNote3} onChange={this.handleChange} name='internalNote3' placeholder="ex: Needs staff intervention." />
           </label>
-          <button>Update Inventory</button>
+          <p><Button className={"btn btn-secondary"} type="submit" value="Submit" >Update Inventory</Button></p>
         </form>
         <h4>Returned Item After Update</h4>
         <p>Title: {this.state.title}</p>

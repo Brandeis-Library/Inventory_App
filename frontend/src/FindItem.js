@@ -46,7 +46,7 @@ class FindItem extends React.Component {
   render() {
     return (
       <div className="list">
-        <p>Barcode being retreived: {this.state.barcode}</p>
+        <h4>Barcode being retreived: {this.state.barcode}</h4>
         <p>Title: {this.state.title}</p>
         <p>Call # {this.state.callNum}</p>
         <p>MMS (BibID): {this.state.mms_id}</p>

@@ -1,10 +1,11 @@
 body {
   margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
+  /* font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
     'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
     sans-serif;
   -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
+  -moz-osx-font-smoothing: grayscale; */
+  font-size: 16px;
 }
 
 code {
@@ -12,15 +13,31 @@ code {
     monospace;
 }
 
+h1 {
+  margin-bottom: 25px;
+}
+
+.App {
+  text-align: center;
+  background-color:  #b1cbbb;
+  padding: 30px 0;
+}
+
+.App h1 {font-family: Caveat;}
+
+.App .list {font-family: Libre; color: #000};
+
+button {
+  margin: 0;
+  text-align: center;
+}
+
+
 .btn-secondary {
-  background: #050505;
-  color: aquamarine;
   border-radius: 12px;
-  border-color: aquamarine;
 }
 
 .btn-secondary:hover {
-  color: white;
   border-color: white;
   box-shadow: 0 3px #666;
 }
@@ -28,3 +45,17 @@ code {
 .btn-secondary:active {
   transform: translateY(2px);
 }
+
+.updateH4 {
+  margin-top: 50px;
+}
+
+input[type=text] {
+  width: 100%;
+  padding: 12px 20px;
+  margin: 8px 0;
+  box-sizing: border-box;
+  border-radius: 12px;
+}
+
+
