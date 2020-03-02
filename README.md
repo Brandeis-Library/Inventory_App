@@ -10,25 +10,33 @@ _{ The current version of the application grabs a barcode via a barcode scanning
 
 ## Setup/Installation Requirements
 
-* _This is a great place_
-* _to list setup instructions_
-* _in a simple_
-* _easy-to-understand_
-* _format_
+* Make sure you have Node.js installed globally
+* Clone or fork the files to a location of your choice
+* Go to the folder/location of the download or where you have moved the files
+* On your terminal go to backend.
+* Run npm i
+* At the root of backend create an .env file
+* Fill in the data for the 4 environmental variables: EXLIBRIS_API_ROOT, EXLIBRIS_API_PATH, EXLIBRIS_API_BIB_GET_KEY, EXLIBRIS_API_BIB_UPDATE_KEY
+* At the terminal type npm run start to start the backend server.
+* In your web browser, navigate to localhost:9000 to see if the server is running.
+* On a new terminal instance, navigate to frontend
+* Run npm i
+* On the terminal run npm run start to start the front end server.
+* Navigate to localhost:3000 to see if the frontend is live
+
 
 _{Leave nothing to chance! You want it to be easy for potential users, employers and collaborators to run your app. Do I need to run a server? How should I set up my databases? Is there other code this app depends on?}_
 
 ## Known Bugs
 
-_{Are there issues that have not yet been resolved that you want to let users know you know?  Outline any issues that would impact use of your application.  Share any workarounds that are in place. }_
+_{ At this time, the application is behaving as designed. We have plans to add more features such as adding more options for updating data and reviewing security options. }_
 
 ## Support and contact details
-
-_{Let people know what to do if they run into any issues or have questions, ideas or concerns.  Encourage them to contact you or make a contribution to the code.}_
+_{ https://knowledge.exlibrisgroup.com/Alma, libsys-group at brandeis dot edu }_
 
 ## Technologies Used
 
-_{ Node.js. React.js, vanilla JavaScript, }_
+_{ Node.js. React.js, vanilla JavaScript, Express.js, nodemon, axios, body-parser }_
 
 ### License
 
