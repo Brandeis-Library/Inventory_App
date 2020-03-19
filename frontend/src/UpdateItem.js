@@ -10,8 +10,10 @@ class UpdateItem extends React.Component {
       internalNote3: "",
       title: "",
       callNum: "",
+      status: "",
       inventoryDate: "",
       internalNoteReturned: "",
+
     }
   }
 
@@ -41,6 +43,7 @@ class UpdateItem extends React.Component {
         title: data.bib_data.title,
         callNum: data.holding_data.call_number,
         inventoryDate: data.item_data.inventory_date,
+        status: data.item_data.base_status.desc,
       });
     } else {
       alert("Retrieve a valid item before submitting changes.")
@@ -66,6 +69,7 @@ class UpdateItem extends React.Component {
         <h4>Returned Item After Update</h4>
         <p>Title: {this.state.title}</p>
         <p>Call # {this.state.callNum}</p>
+        <p>Status: {this.state.status}</p>
         <p>Inventory Date: {this.state.inventoryDate}</p>
         <p>Internal Note: {this.state.internalNoteReturned}</p>
 

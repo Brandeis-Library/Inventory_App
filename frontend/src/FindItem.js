@@ -9,9 +9,10 @@ class FindItem extends React.Component {
     this.state = {
       barcode: "",
       title: "",
-      mms_id: "",
-      holdingID: "",
-      itemID: "",
+      // mms_id: "",
+      // holdingID: "",
+      // itemID: "",
+      status: "",
       callNum: "",
       inventoryDate: "",
       internalNote3: "",
@@ -22,13 +23,14 @@ class FindItem extends React.Component {
 
   async callAPI() {
     let { data } = await axios.post("http://localhost:9000/retreiveItem", { barcode: this.state.barcode })
-
+    console.log("returned item ", data);
     if (data.name !== "Error") {
       await this.setState({
         title: data.bib_data.title,
-        mms_id: data.bib_data.mms_id,
-        holdingID: data.holding_data.holding_id,
-        itemID: data.item_data.pid,
+        // mms_id: data.bib_data.mms_id,
+        // holdingID: data.holding_data.holding_id,
+        // itemID: data.item_data.pid,
+        status: data.item_data.base_status.desc,
         callNum: data.holding_data.call_number,
         inventoryDate: data.item_data.inventory_date || "None",
         internalNote3: data.item_data.internal_note_3,
@@ -53,9 +55,10 @@ class FindItem extends React.Component {
         <h4>Barcode being retreived: {this.state.barcode}</h4>
         <p>Title: {this.state.title}</p>
         <p>Call # {this.state.callNum}</p>
-        <p>MMS (BibID): {this.state.mms_id}</p>
+        <p>Status: {this.state.status}</p>
+        {/* <p>MMS (BibID): {this.state.mms_id}</p>
         <p>HoldingID: {this.state.holdingID}</p>
-        <p>ItemID: {this.state.itemID}</p>
+        <p>ItemID: {this.state.itemID}</p> */}
         <p>Inventory Date: {this.state.inventoryDate}</p>
         <p>Internal Note: {this.state.internalNote3}</p>
         <hr />
