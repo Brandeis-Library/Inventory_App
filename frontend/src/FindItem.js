@@ -14,6 +14,10 @@ class FindItem extends React.Component {
       // itemID: "",
       status: "",
       callNum: "",
+      permLib: "",
+      permLoc: "",
+      tempLib: "",
+      tempLoc: "",
       inventoryDate: "",
       internalNote3: "",
       dataObj: {},
@@ -34,6 +38,10 @@ class FindItem extends React.Component {
         callNum: data.holding_data.call_number,
         inventoryDate: data.item_data.inventory_date || "None",
         internalNote3: data.item_data.internal_note_3,
+        permLib: data.item_data.library.desc,
+        permLoc: data.item_data.location.desc,
+        tempLib: data.holding_data.temp_library.desc,
+        tempLoc: data.holding_data.temp_location.desc,
         dataObj: data,
       })
     } else {
@@ -50,6 +58,8 @@ class FindItem extends React.Component {
   }
 
   render() {
+
+
     return (
       <div className="list">
         <h4>Barcode being retreived: {this.state.barcode}</h4>
@@ -59,6 +69,13 @@ class FindItem extends React.Component {
         {/* <p>MMS (BibID): {this.state.mms_id}</p>
         <p>HoldingID: {this.state.holdingID}</p>
         <p>ItemID: {this.state.itemID}</p> */}
+        <p>Library/Location: {this.state.permLib} - {this.state.permLoc}</p>
+
+        {this.state.tempLib ?
+          <p>Temp Library/Location: {this.state.tempLib} - {this.state.tempLoc}</p>
+          : <div></div>
+        }
+
         <p>Inventory Date: {this.state.inventoryDate}</p>
         <p>Internal Note: {this.state.internalNote3}</p>
         <hr />
