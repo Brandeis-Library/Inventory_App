@@ -1,25 +1,24 @@
-var express = require('express');
+var express = require("express");
 var router = express.Router();
 const axios = require('axios');
 const dotenv = require('dotenv');
 dotenv.config();
 
-
 //This route is here to allow people to make sure the back end is running via the browser.
 router.get('/', function (req, res, next) {
   try {
-    res.status(200).send("You have reached route updateItem")
+    res.status(200).send("You have reached route updateInventoryDate")
   } catch (error) {
     console.log(error)
   }
 })
 
 
-/*  update item route. */
+/*  update inventory date route. */
 router.put('/', async function (req, res, next) {
   try {
 
-    //adding new/update data on item_data
+    //adding new/update inventory date on item_data
     req.body.item_data.internal_note_3 = req.body.note;
     const date = new Date();
     req.body.item_data.inventory_date = date;

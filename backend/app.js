@@ -1,18 +1,19 @@
-var createError = require('http-errors');
-var express = require('express');
-var path = require('path');
-var cookieParser = require('cookie-parser');
-var bodyParser = require('body-parser');
-var logger = require('morgan');
-var cors = require("cors");
+const createError = require('http-errors');
+const express = require('express');
+const path = require('path');
+const cookieParser = require('cookie-parser');
+const bodyParser = require('body-parser');
+const logger = require('morgan');
+const cors = require("cors");
 
-var proxy = require('http-proxy-middleware');
+const proxy = require('http-proxy-middleware');
 
-var indexRouter = require('./routes/index');
-var updateItemRouter = require('./routes/updateItemAPI');
-var retreiveItemRouter = require("./routes/retreiveItemAPI");
+const indexRouter = require('./routes/index');
+const updateItemRouter = require('./routes/updateItemAPI');
+const retreiveItemRouter = require("./routes/retreiveItemAPI");
+const updateInventoryDateRouter = require("./routes/updateInventoryDateAPI");
 
-var app = express();
+const app = express();
 
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
@@ -31,7 +32,7 @@ app.use(express.static(path.join(__dirname, 'public')));
 app.use('/', indexRouter);
 app.use('/updateItem', updateItemRouter);
 app.use("/retreiveItem", retreiveItemRouter);
-
+app.use("/updateItemInventoryDate", updateInventoryDateRouter);
 
 
 
