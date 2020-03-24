@@ -12,6 +12,7 @@ const indexRouter = require('./routes/index');
 const updateItemRouter = require('./routes/updateItemAPI');
 const retreiveItemRouter = require("./routes/retreiveItemAPI");
 const updateInventoryDateRouter = require("./routes/updateInventoryDateAPI");
+const retreiveHoldingsRouter = require('./routes/holdingsDataAPI');
 
 const app = express();
 
@@ -33,6 +34,7 @@ app.use('/', indexRouter);
 app.use('/updateItem', updateItemRouter);
 app.use("/retreiveItem", retreiveItemRouter);
 app.use("/updateItemInventoryDate", updateInventoryDateRouter);
+app.use("/holdingsData", retreiveHoldingsRouter);
 
 
 

@@ -22,7 +22,6 @@ class FindItem extends React.Component {
       internalNote3: "",
       dataObj: {},
       link: "",
-      count: 0,
     }
   }
 
@@ -59,6 +58,18 @@ class FindItem extends React.Component {
 
         });
       }
+
+      let data3 = await axios.put("http://localhost:9000/holdingsData", { mmsId: this.state.mms_id, holdingId: this.state.holdingID, });
+      const dataXML = data3.data;
+      console.log("holdings Data XML", dataXML)
+      //data will be used to show what the updated object looks like on the screen
+      // if (data !== null && Object.keys(data).length !== 0) {
+      //   await this.setState({
+
+      //     inventoryDate: data.item_data.inventory_date
+
+      //   });
+      // }
 
     } else {
       alert("Please enter a valid barcode.")
