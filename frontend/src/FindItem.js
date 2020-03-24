@@ -22,6 +22,7 @@ class FindItem extends React.Component {
       internalNote3: "",
       dataObj: {},
       link: "",
+      count: 0,
     }
   }
 
@@ -47,43 +48,34 @@ class FindItem extends React.Component {
         dataObj: data,
 
       })
+
+      let data2 = await axios.put("http://localhost:9000/updateItemInventoryDate", { ...this.state.dataObj, mmsId: this.state.mms_id, holdingId: this.state.holdingID, itemId: this.state.itemID })
+      data = data2.data;
+      //data will be used to show what the updated object looks like on the screen
+      if (data !== null && Object.keys(data).length !== 0) {
+        await this.setState({
+
+          inventoryDate: data.item_data.inventory_date
+
+        });
+      }
+
     } else {
       alert("Please enter a valid barcode.")
     }
   }
 
   async componentDidUpdate(prevProps, prevState) {
-    console.log("inside findItem componentDidUpdate")
-    console.log("prevProps", prevProps, "prevState", prevState);
-
-
     if (prevState.inventoryDate === this.state.inventoryDate) {
-      console.log("inside findItem componentDidUpdate if inventory_date statement")
       if (prevProps.barcode2 !== this.props.barcode2) {
         console.log("inside findItem componentDidUpdate if barcode statement")
         this.callAPI();
       }
-
-      let { data } = await axios.put("http://localhost:9000/updateItemInventoryDate", { ...this.state.dataObj, mmsId: this.state.mms_id, holdingId: this.state.holdingID, itemId: this.state.itemID })
-      console.log("state------  ", this.state);
-      console.log("data--------  ", data);
-      //data will be used to show what the updated object looks like on the screen
-      if (Object.keys(data).length !== 0) {
-        await this.setState({
-
-          inventoryDate: data.item_data.inventory_date
-
-        });
-
-      }
     }
-
   }
 
 
   render() {
-    console.log("props", this.props)
-
     return (
       <div className="list">
         <h4>Barcode being retreived: {this.state.barcode}</h4>
