@@ -83,32 +83,33 @@ class FindItem extends React.Component {
     }
   }
 
-
   render() {
     return (
-      <div className="list">
-        <h4>Barcode being retreived: {this.state.barcode}</h4>
-        <p>Title: {this.state.title}</p>
-        <p>Call # {this.state.callNum}</p>
-        <p>Status: {this.state.status}</p>
-        {/* <p>MMS (BibID): {this.state.mms_id}</p>
+      <div >
+        <div className="list">
+          <h4>Barcode being retreived: {this.state.barcode}</h4>
+          <p>Title: {this.state.title}</p>
+          <p>Call # {this.state.callNum}</p>
+          <p>Status: {this.state.status}</p>
+          {/* <p>MMS (BibID): {this.state.mms_id}</p>
         <p>HoldingID: {this.state.holdingID}</p>
         <p>ItemID: {this.state.itemID}</p> */}
-        <p>Library/Location: {this.state.permLib} - {this.state.permLoc}</p>
+          <p>Library/Location: {this.state.permLib} - {this.state.permLoc}</p>
 
-        {this.state.tempLib ?
-          <p>Temp Library/Location: {this.state.tempLib} - {this.state.tempLoc}</p>
-          : <div></div>
-        }
-        {this.state.string583a ?
-          <p>583a field: {this.state.string583a}</p>
-          : <div></div>
-        }
-        <p>Inventory Date: {this.state.inventoryDate}</p>
-        <p>Internal Note: {this.state.internalNote3}</p>
-        <hr />
-        <UpdateItem itemToUpdate={this.state} />
+          {this.state.tempLib ?
+            <p>Temp Library/Location: {this.state.tempLib} - {this.state.tempLoc}</p>
+            : <div></div>
+          }
+          {this.state.string583a ?
+            <p>583a field: {this.state.string583a}</p>
+            : <div></div>
+          }
+          <p>Inventory Date: {this.state.inventoryDate}</p>
+          <p>Internal Note: {this.state.internalNote3}</p>
+          <hr />
+          <UpdateItem itemToUpdate={this.state} />
 
+        </div>
       </div>)
   }
 }

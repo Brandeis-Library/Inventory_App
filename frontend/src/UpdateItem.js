@@ -57,7 +57,7 @@ class UpdateItem extends React.Component {
   render() {
 
     return (
-      <div>
+      <div >
         <h4 className={"updateH4"}>Update an Item</h4>
         <form onSubmit={this.updateInventory}>
           <label>
