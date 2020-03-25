@@ -18,6 +18,7 @@ class FindItem extends React.Component {
       permLoc: "",
       tempLib: "",
       tempLoc: "",
+      string583a: "",
       inventoryDate: "",
       internalNote3: "",
       dataObj: {},
@@ -60,17 +61,14 @@ class FindItem extends React.Component {
       }
 
       let data3 = await axios.put("http://localhost:9000/holdingsData", { mmsId: this.state.mms_id, holdingId: this.state.holdingID, });
+
       const dataXML = data3.data;
       console.log("holdings Data XML", dataXML)
       //data will be used to show what the updated object looks like on the screen
-      // if (data !== null && Object.keys(data).length !== 0) {
-      //   await this.setState({
 
-      //     inventoryDate: data.item_data.inventory_date
-
-      //   });
-      // }
-
+      await this.setState({
+        string583a: dataXML
+      });
     } else {
       alert("Please enter a valid barcode.")
     }
@@ -102,7 +100,10 @@ class FindItem extends React.Component {
           <p>Temp Library/Location: {this.state.tempLib} - {this.state.tempLoc}</p>
           : <div></div>
         }
-
+        {this.state.string583a ?
+          <p>583a field: {this.state.string583a}</p>
+          : <div></div>
+        }
         <p>Inventory Date: {this.state.inventoryDate}</p>
         <p>Internal Note: {this.state.internalNote3}</p>
         <hr />

@@ -23,7 +23,7 @@ class ReceiveBarcode extends React.Component {
 
   handleSubmit = (event) => {
     event.preventDefault();
-    if (this.state.tempBarcode.length === 14) {
+    if (this.state.tempBarcode.length <= 14 || this.state.tempBarcode.length >= 13) {
       this.setState({ barcode: this.state.tempBarcode });
       this.setState({ tempBarcode: "" });
     } else {

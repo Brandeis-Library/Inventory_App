@@ -24,18 +24,20 @@ router.put("/", async function (req, res, next) {
     //returning the data object to the front end so we can show scanned item.
     console.log("xml data backend", data)
     let xmlData = data.anies[0];
-
-    const parseString = require('xml2js').parseString;
-
-    parseString(xmlData, function (err, result) {
-      console.dir(result);
-      const xml2JSON = JSON.stringify(result);
-      console.log(xml2JSON);
-    });
+    let string583a = ""
 
     const dataJSON = JSON.stringify(xmlData);
     console.log("dataJSON", dataJSON);
-    res.json(data);
+    const xmlNum = dataJSON.indexOf('committed to retain')
+
+    if (xmlNum >= 0) {
+      string583a = 'committed to retain';
+    } else {
+      string583a = "";
+    }
+
+    console.log("Index Number...", xmlNum);
+    res.send(string583a);
   } catch (error) {
     console.log("retreiveItemErrorAPI Error:   ", error);
     res.send(error);
