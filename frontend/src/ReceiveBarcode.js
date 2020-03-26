@@ -36,6 +36,7 @@ class ReceiveBarcode extends React.Component {
 
     return (
       <div>
+
         <form onSubmit={this.handleSubmit}>
           <label>
             Barcode:

@@ -71,7 +71,7 @@ class UpdateItem extends React.Component {
         <p>Call # {this.state.callNum}</p>
         <p>Status: {this.state.status}</p>
         <p>Inventory Date: {this.state.inventoryDate}</p>
-        <p>Internal Note: {this.state.internalNoteReturned}</p>
+        <p><strong>Internal Note: {this.state.internalNoteReturned}</strong></p>
 
       </div>
     )

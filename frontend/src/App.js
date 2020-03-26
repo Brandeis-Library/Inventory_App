@@ -7,7 +7,8 @@ function App() {
 
   return (
     <div className="App">
-      <h1>Brandeis Library Inventory App</h1>
+      <img className="logo" src='/Library_logo_blue_DIGITAL.png' alt='Brandeis Logo' />
+      <h1>Inventory App</h1>
       < ReceiveBarcode />
     </div >
   );

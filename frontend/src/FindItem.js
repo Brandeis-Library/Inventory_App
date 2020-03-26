@@ -97,11 +97,11 @@ class FindItem extends React.Component {
           <p>Library/Location: {this.state.permLib} - {this.state.permLoc}</p>
 
           {this.state.tempLib ?
-            <p>Temp Library/Location: {this.state.tempLib} - {this.state.tempLoc}</p>
+            <p><strong>Temp Library/Location: {this.state.tempLib} - {this.state.tempLoc}</strong></p>
             : <div></div>
           }
           {this.state.string583a ?
-            <p>583a field: {this.state.string583a}</p>
+            <p><strong>583a field: {this.state.string583a}</strong></p>
             : <div></div>
           }
           <p>Inventory Date: {this.state.inventoryDate}</p>
