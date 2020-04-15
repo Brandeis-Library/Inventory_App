@@ -4,7 +4,7 @@ const axios = require('axios');
 const dotenv = require('dotenv');
 dotenv.config();
 
-//This route is here to allow people to make sure the back end is running via the browser.
+//This route is here to allow people to make sure the back end api is running via the browser.
 router.get('/', function (req, res, next) {
   try {
     res.status(200).send("You have reached route retreiveItem")
