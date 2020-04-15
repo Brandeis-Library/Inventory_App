@@ -14,13 +14,13 @@ router.get('/', function (req, res, next) {
   }
 })
 
-//route to retrieve an item via the scanned in barcode from the frontend.
+//route to retrieve the holdings for an item so that the shelf location can be retreived displaye.
 router.put("/", async function (req, res, next) {
   try {
-    //item retrieve query to Alma backend. API URL, Item Barcode, and APIKEY
+    //item retrieve query to Alma backend. Holdings API URL, Item Barcode, and APIKEY
     const { data } = await axios.get(process.env.EXLIBRIS_API_ROOT + process.env.EXLIBRIS_API_PATH_HOLDINGS + req.body.mmsId + '/holdings/' + req.body.holdingId + '?apikey=' + process.env.EXLIBRIS_API_BIB_GET_KEY);
 
-    //returning the data object to the front end so we can show scanned item.
+    //pulling out the XML hodings data and searching to see if 'committed to retain' is in the text. If the text is found returning the text to the front end to show.
     let xmlData = data.anies[0];
     let string583a = ""
     const dataJSON = JSON.stringify(xmlData);
