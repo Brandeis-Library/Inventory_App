@@ -63,7 +63,6 @@ class FindItem extends React.Component {
       let data3 = await axios.put("http://localhost:9000/holdingsData", { mmsId: this.state.mms_id, holdingId: this.state.holdingID, });
 
       const dataXML = data3.data;
-      console.log("holdings Data XML", dataXML)
       //data will be used to show what the updated object looks like on the screen
 
       await this.setState({

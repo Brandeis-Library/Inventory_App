@@ -1,7 +1,5 @@
 import React from 'react';
 import { Button } from 'react-bootstrap';
-
-
 import FindItem from './FindItem';
 
 
@@ -19,8 +17,6 @@ class ReceiveBarcode extends React.Component {
     this.setState({ tempBarcode: event.target.value })
   }
 
-
-
   handleSubmit = (event) => {
     event.preventDefault();
     if (this.state.tempBarcode.length <= 14 || this.state.tempBarcode.length >= 13) {
@@ -30,7 +26,6 @@ class ReceiveBarcode extends React.Component {
       alert("Please enter a properly formatted barcode.")
     }
   }
-
 
   render() {
 
