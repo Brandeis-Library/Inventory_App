@@ -1,12 +1,16 @@
 # _{Inventory App}_
 
-#### _{An application to help automate the physical inventory for libraries using ExLibris Alma.}, {02/21/2019}_
+#### _{An application to help automate the physical inventory for libraries using ExLibris Alma.}, {04/15/2020}_
 
 #### By _**{Chris Underwood}**_
 
 ## Description
 
-_{ The current version of the application grabs a barcode via a barcode scanning and automatically send the barcode to an ALMA API and returns an object that contains the bib, holdings, and item records. Selected fields are shown on the screen. There is a next field on the screen that maps to item_note_3 where notes can be saved. When the Update Inventory button is pressed, the object is returned with item_note_3 and a new date object in inventory_date for today's date. The application has a React frontend and a node backend each with their own servers. }_
+_{ The current version of the application grabs a barcode via a barcode scanning and automatically send the barcode to an ALMA API and returns an object that contains the bib, holdings, and item records. Selected fields are shown on the screen. Then the system does a check to see if the current date is in the Inventory Date field. If yes, nothing is done. If not, a request is automatically sent to the backend to update the Inventory Date and return a updated item object. The date updated date is then presented on screen.
+
+There is a text field on the screen that maps to item_note_3 where notes can be saved. When the Update Inventory button is pressed, the object is returned with item_note_3 in inventory_date for today's date.
+
+The application has a React frontend and a node backend each with their own servers. }_
 
 ## Setup/Installation Requirements
 
@@ -23,9 +27,6 @@ _{ The current version of the application grabs a barcode via a barcode scanning
 * Run npm i
 * On the terminal run npm run start to start the front end server.
 * Navigate to localhost:3000 to see if the frontend is live
-
-
-_{Leave nothing to chance! You want it to be easy for potential users, employers and collaborators to run your app. Do I need to run a server? How should I set up my databases? Is there other code this app depends on?}_
 
 ## Known Bugs
 
