@@ -8,6 +8,8 @@
 
 _{ The current version of the application grabs a barcode via a barcode scanning and automatically send the barcode to an ALMA API and returns an object that contains the bib, holdings, and item records. Selected fields are shown on the screen. Then the system does a check to see if the current date is in the Inventory Date field. If yes, nothing is done. If not, a request is automatically sent to the backend to update the Inventory Date and return a updated item object. The date updated date is then presented on screen.
 
+There are also 2 special checks: 1) to see if the item is "commited to retain" in the holdings record, 2) to see if the item is being held in a temporary location. Both of these are hidden unless true and are shown in bold in the Barcode Being Retrieved section. None, one, or two of these special fields can be true.
+
 There is a text field on the screen that maps to item_note_3 where notes can be saved. When the Update Inventory button is pressed, the object is returned with item_note_3 in inventory_date for today's date.
 
 The application has a React frontend and a node backend each with their own servers. }_
