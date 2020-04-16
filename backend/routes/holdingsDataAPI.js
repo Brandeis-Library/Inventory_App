@@ -10,7 +10,7 @@ router.get('/', function (req, res, next) {
   try {
     res.status(200).send("You have reached route holdingsData")
   } catch (error) {
-    console.log(error)
+    console.log(error.message)
   }
 })
 
@@ -34,7 +34,7 @@ router.put("/", async function (req, res, next) {
 
     res.send(string583a);
   } catch (error) {
-    console.log("retreiveItemErrorAPI Error:   ", error);
+    console.log("retreiveItemErrorAPI Error:   ", error.message);
     res.send(error);
   }
 });

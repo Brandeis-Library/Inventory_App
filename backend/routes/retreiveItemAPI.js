@@ -9,7 +9,7 @@ router.get('/', function (req, res, next) {
   try {
     res.status(200).send("You have reached route retreiveItem")
   } catch (error) {
-    console.log(error)
+    console.log(error.message)
   }
 })
 
@@ -23,7 +23,7 @@ router.post("/", async function (req, res, next) {
     //returning the data object to the front end so we can show scanned item.
     res.json(data);
   } catch (error) {
-    console.log("retreiveItemErrorAPI Error:   ", error);
+    console.log("retreiveItemErrorAPI Error:   ", error.message);
     res.send(error);
   }
 });

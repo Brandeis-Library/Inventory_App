@@ -10,7 +10,7 @@ router.get('/', function (req, res, next) {
   try {
     res.status(200).send("You have reached route updateItem")
   } catch (error) {
-    console.log(error)
+    console.log(error.message)
   }
 })
 
@@ -31,7 +31,7 @@ router.put('/', async function (req, res, next) {
     //returning the data object to the front end so we can show changes.
     res.json(data);
   } catch (error) {
-    console.log("updateErrorAPI Error:   ", error);
+    console.log("updateErrorAPI Error:   ", error.message);
     res.send(error)
   }
 

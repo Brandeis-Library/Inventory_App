@@ -29,7 +29,8 @@ class FindItem extends React.Component {
 
   async callAPI() {
     let { data } = await axios.post("http://localhost:9000/retreiveItem", { barcode: this.props.barcode2 })
-    console.log("returned item ", data);
+    //console.log("returned item ", data);
+
     if (data.name !== "Error") {
       await this.setState({
         barcode: this.props.barcode2,
@@ -69,7 +70,7 @@ class FindItem extends React.Component {
         string583a: dataXML
       });
     } else {
-      alert("Please enter a valid barcode.")
+      alert(data.message)
     }
   }
 
