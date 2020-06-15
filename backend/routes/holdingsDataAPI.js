@@ -36,13 +36,15 @@ router.put('/', async function (req, res, next) {
     console.log('document', document);
     let xmlParsedDoc = await new dom().parseFromString(document);
     string583a = xpath.select('//datafield[@tag=583]/subfield', xmlParsedDoc);
-    if (!string583a) {
+    console.log('string583a----------   ', string583a);
+    if (string583a.length === 0) {
       string583a = '';
     } else {
       string583a = string583a[0].toString();
+      string583a = string583a.replace(/<subfield(.*?)>/g, '');
+      string583a = string583a.replace(/<\/subfield>/g, '');
     }
 
-    console.log('string583a----------   ', string583a);
     res.send(string583a);
     // let xmlData = data.anies[0];
     // let string583a = '';
